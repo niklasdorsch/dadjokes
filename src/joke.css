@@ -1,0 +1,10 @@
+.joke-box{
+	background-color: lightgrey;
+	padding: 
+}
+.grow { transition: all .2s ease-in-out;  cursor: pointer;}
+.grow:hover { transform: scale(1.5); }
+
+.margin-top {
+	margin-top: 30px;
+}

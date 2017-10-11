@@ -15,27 +15,29 @@ class Joke extends React.Component {
   UserList() {
     var ourContext = this;
     $.getJSON('https://icanhazdadjoke.com/', function(results) {
-          console.log(results.joke);
           ourContext.setState({joke: results.joke});
           ourContext.setState({id: results.id});
 
       });
   }
+  clickedJoke = (e) => {
+    this.props.handleLoadOneJoke(this.state.joke, this.state.id);
+  }
 
   render() {
      var jokes =  <div className="box">
                     <div className="media">
-                     <div className="media-left">
-                        <figure className="image is-64x64">
-                          <img src={require("./dad.png")}></img>
+                     <div className="media-left" onClick={this.clickedJoke}>
+                        <figure className="image is-64x64 grow" >
+                          <img src={require("./dad.png")} alt="Your dad is cool"></img>
                         </figure>
                       </div>
                     
                       <div className="media-content">
                         <div className="content">
-                          <strong><h5>{ this.state.joke }</h5></strong>
+                          <strong><h5>{ this.props.joke }</h5></strong>
                           <div className="is-pulled-right">
-                            <small><span>ID: {this.state.id }</span></small>
+                            <small><span>ID: {this.props.jokeid }</span></small>
                           </div>
                         </div>
                       </div>
@@ -44,7 +46,7 @@ class Joke extends React.Component {
                       </nav>
                     </div>
                   </div>;
-    
+
 
     return (
       <div id="" className="">
